@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Checkout from "./components/Checkout";
 import CartPage from "./pages/CartPage";
 import OrderHistoryPage from "./pages/OrderHistoryPage";
+import BookList from "./pages/BookList";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -85,6 +86,7 @@ function App() {
             <div>
               <Signup />
               <Login />
+
               <input
                 type="text"
                 value={search}
@@ -93,24 +95,7 @@ function App() {
               />
               <button onClick={fetchBooks}>Search</button>
 
-              <h2>Book List</h2>
-              {books.length === 0 ? (
-                <p>No books found</p>
-              ) : (
-                <ul>
-                  {books.map((book, index) => (
-                    <li key={index} style={{ marginBottom: "10px" }}>
-                      <strong>{book.title}</strong> by {book.authors?.join(", ")} <br />
-                      Rs. {book.price} <br />
-                      {book.thumbnail && (
-                        <img src={book.thumbnail} alt={book.title} width={100} />
-                      )}
-                      <br />
-                      <button onClick={() => addToCart(book)}>Add to Cart</button>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <BookList books={books} addToCart={addToCart} />
             </div>
           } />
           <Route path="/cart" element={

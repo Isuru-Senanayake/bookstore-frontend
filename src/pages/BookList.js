@@ -1,8 +1,16 @@
 import React from "react";
 
-const BookList = ({ books, addToCart }) => {
+function BookList({ books, search, setSearch, fetchBooks, addToCart }) {
   return (
     <div>
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search books"
+      />
+      <button onClick={fetchBooks}>Search</button>
+
       <h2>Book List</h2>
       {books.length === 0 ? (
         <p>No books found</p>
@@ -23,6 +31,6 @@ const BookList = ({ books, addToCart }) => {
       )}
     </div>
   );
-};
+}
 
 export default BookList;

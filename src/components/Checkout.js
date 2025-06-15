@@ -1,29 +1,42 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Checkout = ({ cart, getTotal, setCart }) => {
   const navigate = useNavigate();
 
-  const handlePlaceOrder = () => {
-    // Get existing orders from localStorage
-    const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+  const handlePlaceOrder = async () => {
+    try {
+      const token = localStorage.getItem("token");
 
-    // Create new order
-    const newOrder = {
-      id: Date.now(),
-      items: cart,
-      total: getTotal(),
-    };
+      if (!token) {
+        alert("You must be logged in to place an order.");
+        return;
+      }
 
-    // Save new order to localStorage
-    localStorage.setItem("orders", JSON.stringify([...existingOrders, newOrder]));
+      // Create order payload
+      const newOrder = {
+        cart: cart,
+        total: getTotal(),
+      };
 
-    // Clear the cart
-    setCart([]);
-    localStorage.removeItem("cart");
+      // Send order to backend
+      await axios.post("http://localhost:5000/api/orders", newOrder, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    // Navigate to order history
-    navigate("/history");
+      // Clear cart after successful order
+      setCart([]);
+      localStorage.removeItem("cart");
+
+      // Redirect to order history
+      navigate("/history");
+    } catch (error) {
+      console.error("Order placement failed:", error);
+      alert("Failed to place order. Please try again.");
+    }
   };
 
   return (

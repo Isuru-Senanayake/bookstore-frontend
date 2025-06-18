@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function OrderHistoryPage() {
-  const [orders, setOrders] = useState([]); // ✅ Ensure it's an array
+  const [orders, setOrders] = useState([]); // Ensure it's an array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 

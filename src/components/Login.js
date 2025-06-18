@@ -24,10 +24,10 @@ function Login({ setIsLoggedIn }) {
         localStorage.setItem("token", res.data.token);
         setMessage("Login successful!");
 
-        // ✅ Set login state in App.js
+        // Set login state in App.js
         setIsLoggedIn(true);
 
-        // ✅ Redirect to book list
+        // Redirect to book list
         navigate("/books");
       }
     } catch (error) {

@@ -76,3 +76,5 @@ Frontend will run on: http://localhost:3000
 # API Endpoints
 MethodEndpointDescriptionGET/booksGet all booksGET/books/:idGet book by IDPOST/booksAdd new bookPUT/books/:idUpdate bookDELETE/books/:idDelete book
 Base URL: http://localhost:3001
+
+# Testing (Planned)

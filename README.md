@@ -53,26 +53,26 @@ bookstore-application/
    git clone https://github.com/Isuru-Senanayake/bookstore-backend.git
    cd bookstore-backend
 
-Install dependencies
+# Install dependencies
 npm install
 
-Start the JSON Server
+# Start the JSON Server
 npm start
 Backend API will run on: http://localhost:3001
 
-Frontend Setup
+# Frontend Setup
 
-Clone the frontend repository
+# Clone the frontend repository
 git clone https://github.com/Isuru-Senanayake/bookstore-frontend.git
 cd bookstore-frontend
 
-Install dependencies
+# Install dependencies
 npm install
 
-Start the React application
+# Start the React application
 npm start
 Frontend will run on: http://localhost:3000
 
-API Endpoints
+# API Endpoints
 MethodEndpointDescriptionGET/booksGet all booksGET/books/:idGet book by IDPOST/booksAdd new bookPUT/books/:idUpdate bookDELETE/books/:idDelete book
 Base URL: http://localhost:3001
